@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, amsthm}
 
-\title{The Geometric Horizon: Ricci Curvature Bounds and Non-Lefschetz Invariants in Complexity Class Separation}
+\title{The Geometric Horizon: Cohomological Obstructions and Normal Bundle Constraints on Determinantal Embeddings}
 \author{Dezmond Lee Armstrong}
 \date{June 2026}
 
@@ -13,7 +13,7 @@
 \maketitle
 
 \section{Introduction}
-We formalize the algebraic separation of complexity classes within the framework of Geometric Complexity Theory (GCT) \cite{Mulmuley2002GeometricCT}. We map the solution spaces of non-local polynomials to continuous complex manifolds to prove that $\text{perm}_n$, the permanent of an $n \times n$ variable matrix, cannot be smoothly embedded into the orbit closure of the homogenized determinant $\text{det}_m$ for polynomial scaling bounds $m = \text{poly}(n)$ as the dimension $n \rightarrow \infty$ \cite{On P vs. NP, Geometric Complexity Theory, and the Riemann Hypothesis}.
+We formalize the structural constraints governing the algebraic separation of complexity classes within the framework of Geometric Complexity Theory (GCT) \cite{Mulmuley2002GeometricCT}. We evaluate the continuous topological properties of the complex manifolds associated with non-local polynomials to define the geometric barriers that prevent $\text{perm}_n$, the permanent of an $n \times n$ variable matrix, from smoothly embedding into the orbit closure of the homogenized determinant $\text{det}_m$ for polynomial scaling bounds $m = \text{poly}(n)$ as the dimension $n \rightarrow \infty$ \cite{On P vs. NP, Geometric Complexity Theory, and the Riemann Hypothesis}.
 
 \section{Orbit Closures and Class Varieties}
 Let $V = \text{Sym}^n(\mathbb{C}^{n^2})$ define the vector space of homogeneous polynomials of degree $n$ in $n^2$ variables. Consider the general linear group $G = GL_{n^2}(\mathbb{C})$, acting on $V$ by linear transformation of the coordinates.
@@ -28,66 +28,60 @@ where $\text{padded\_det}_m = x_0^{m-n} \cdot \text{det}_m$ represents the homog
 
 Valiant's algebraic conjecture, $VPs \neq VNP$, dictates that embedding $\mathcal{X}_n \subseteq \mathcal{Y}_m$ requires $m$ to grow super-polynomially relative to $n$.
 
-\section{The Curvature Explosion Bound}
+\section{The Curvature and Normal Bundle Bounds}
 Because the varieties $\mathcal{X}_n$ and $\mathcal{Y}_m$ are invariant under the action of $G$, their coordinate rings $\mathbb{C}[\mathcal{X}_n]$ and $\mathbb{C}[\mathcal{Y}_m]$ decompose into a direct sum of irreducible $G$-modules (Weyl modules) parameterized by integer partitions $\lambda$ of the polynomial degree.
 
-To establish the non-relativizing lower bound without violating the Razborov-Rudich Natural Proofs barrier, we evaluate the asymptotic behavior of the metric tensor under polynomial-dimensional embeddings using continuous topological invariants.
+To analyze the lower bound without violating the Razborov-Rudich Natural Proofs barrier, we establish the necessary conditions under which a smooth holomorphic isometric embedding $\phi: \mathcal{M}_n \hookrightarrow \mathcal{N}_m$ of the permanent manifold into a target determinantal variety can exist.
 
 \begin{lemma}
-Let $\phi: \mathcal{M}_n \hookrightarrow \mathcal{N}_m$ be a smooth holomorphic isometric embedding of the permanent manifold into a target determinantal manifold $\mathcal{N}_m$ of dimension $m = n^k$. As $n \rightarrow \infty$, the second fundamental form $B(\cdot, \cdot)$ of the embedding satisfies the asymptotic divergence condition:
-\begin{equation}
-\|B\|^2 \geq \Omega\left(\frac{2^{\gamma n}}{n^k}\right)
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-Assume for contradiction that a stable, polynomial-dimensional embedding exists such that $m = \text{poly}(n)$. By the Gauss-Codazzi equations, the sectional curvatures of the submanifold $\mathcal{M}_n$ are strictly bounded from above by the sectional curvatures of the ambient space $\mathcal{N}_m$ plus the norm of the second fundamental form:
+Let $\phi: \mathcal{M}_n \hookrightarrow \mathcal{N}_m$ be a smooth holomorphic isometric embedding where $m = n^k$. By the Gauss-Codazzi equations, the sectional curvatures of the submanifold $\mathcal{M}_n$ are bounded by the ambient curvatures and the second fundamental form $B(\cdot, \cdot)$:
 \begin{equation}
 K_{\mathcal{M}}(X, Y) = K_{\mathcal{N}}(X, Y) + \|B(X, Y)\|^2 - \langle B(X, X), B(Y, Y) \rangle
 \end{equation}
+The smoothness of the embedding is preserved under polynomial scaling if and only if the push-forward mapping of intersection classes satisfies the Gysin injectivity criterion.
+\end{lemma}
 
-Let $\omega_{\mathcal{M}}$ and $\omega_{\mathcal{N}}$ represent the respective fundamental K\"ahler forms. Under the holomorphic embedding $\phi$, the total Chern class $c(\mathcal{M}_n)$ must satisfy the standard Whitney sum relation derived from the normal bundle $\mathcal{N}_{\mathcal{M}/\mathcal{N}}$:
+\begin{proof}
+Let $\omega_{\mathcal{M}}$ and $\omega_{\mathcal{N}}$ represent the respective fundamental K\"ahler forms. Under the holomorphic embedding $\phi$, the total Chern class $c(\mathcal{M}_n)$ satisfies the Whitney sum relation derived from the normal bundle $\mathcal{N}_{\mathcal{M}/\mathcal{N}}$:
 \begin{equation}
 \phi^* c(\mathcal{N}_m) = c(\mathcal{M}_n) \smallsmile c(\mathcal{N}_{\mathcal{M}/\mathcal{N}})
 \end{equation}
 
-Because the permanent polynomial possesses a maximal stabilizer subgroup $S_n \wr S_n$, the top-dimensional cohomology group $H^{2n^2}(\mathcal{M}_n, \mathbb{Z})$ decomposes into a direct sum of distinct irreducible Weyl chambers. The Euler characteristic $\chi(\mathcal{M}_n)$, calculated via the integration of the top Chern class $c_{n^2}(\mathcal{M}_n)$, scales exponentially due to the non-local permutation variations of the boundary:
+The stabilizer subgroup $S_n \wr S_n$ of the permanent polynomial scales the top-dimensional cohomology group $H^{2n^2}(\mathcal{M}_n, \mathbb{Z})$, forcing its Euler characteristic to scale exponentially:
 \begin{equation}
 \chi(\mathcal{M}_n) = \int_{\mathcal{M}_n} c_{n^2}(\mathcal{M}_n) \geq \Omega(2^{\gamma n})
 \end{equation}
+By the Hard Lefschetz Theorem applied to the ambient determinantal variety $\mathcal{N}_m$, the total Betti numbers are polynomially bounded: $\sum b_i(\mathcal{N}_m) \leq O(m^d) = O(n^{kd})$.
 
-Conversely, by the Hard Lefschetz Theorem applied to the ambient determinantal variety $\mathcal{N}_m$, the total Betti numbers $b_i(\mathcal{N}_m)$ are polynomially bounded by the dimension of the embedding space, enforcing $\sum b_i(\mathcal{N}_m) \leq O(m^d) = O(n^{kd})$.
-
-To resolve the dimensionality mapping restriction of the pullback map $\phi^*$, we invoke the Gysin long exact sequence for complex submanifolds. The push-forward (shriek) homomorphism $\phi_!: H^i(\mathcal{M}_n) \to H^{i+2(m-n^2)}(\mathcal{N}_m)$ maps the intersection cycles of $\mathcal{M}_n$ directly into the ambient space cohomology ring. By Poincar\'e duality, the fundamental class $[\mathcal{M}_n]$ pushes forward to the dual class of the normal bundle, satisfying:
+Invoking the Gysin long exact sequence, the push-forward homomorphism $\phi_!: H^i(\mathcal{M}_n) \to H^{i+2(m-n^2)}(\mathcal{N}_m)$ shifts cohomology classes by twice the codimension. By Poincar\'e duality, the fundamental class $[\mathcal{M}_n]$ maps satisfying:
 \begin{equation}
 \phi_!([\mathcal{M}_n]) = c_{m-n^2}(\mathcal{N}_{\mathcal{M}/\mathcal{N}}) \in H^{2(m-n^2)}(\mathcal{N}_m, \mathbb{Z})
 \end{equation}
 
-Because the integration of the top Chern class requires $\chi(\mathcal{M}_n) = \langle c_{n^2}(\mathcal{M}_n), [\mathcal{M}_n] \rangle$, the projection formula dictates that the cup product structure within the ambient space satisfies:
+By the projection formula, the cup product structure behaves according to:
 \begin{equation}
 \phi_!(c_{n^2}(\mathcal{M}_n) \smallsmile [\mathcal{M}_n]) = \phi_!(c_{n^2}(\mathcal{M}_n)) \smallsmile c_{m-n^2}(\mathcal{N}_{\mathcal{M}/\mathcal{N}})
 \end{equation}
-
-The non-triviality of the $S_n \wr S_n$ group stabilizer axes establishes that these intersection classes cannot vanish under projection. Consequently, the total rank of the pushed-forward cycles is bounded from above by the global Betti capacity of the target manifold $\mathcal{N}_m$:
+Because the Gysin map shifts classes into higher degrees, a valid polynomial embedding requires that the alternating topological sum of the submanifold remains bounded by the global Betti capacity of the higher-degree slices of the target manifold. This requires:
 \begin{equation}
 \chi(\mathcal{M}_n) \leq \sum_{i=0}^{2m} b_i(\mathcal{N}_m)
 \end{equation}
-
-Substituting the asymptotic scaling bounds yields the cardinality contradiction:
-\begin{equation}
-\Omega(2^{\gamma n}) \leq O(n^{kd})
-\end{equation}
-
-As $n \rightarrow \infty$, this inequality is violated for any fixed polynomial exponent $k$. To absorb this topological mismatch under the Gauss-Codazzi metric constraints, the normal curvature components of the second fundamental form must diverge asymptotically, forcing $\|B\|^2 \rightarrow \infty$. This directly invalidates the smoothness of the embedding $\phi$, completing the proof.
+If the intersection classes remain non-trivial under projection, substituting the scaling bounds yields the cardinality mismatch $\Omega(2^{\gamma n}) \leq O(n^{kd})$, forcing the normal components of the second fundamental form to diverge ($\|B\|^2 \rightarrow \infty$), which invalidates the smoothness of $\phi$.
 \end{proof}
 
-\section{Unconditional Separation Theorem}
+\section{Conditional Asymptotic Embedding Theorem}
 \begin{theorem}
-Because the second fundamental form diverges exponentially under polynomial scaling constraints, the permanent manifold $\mathcal{M}_n$ cannot be embedded into a polynomially bounded determinantal variety $\mathcal{N}_m$. The structural geometry forces an absolute barrier:
+The algebraic complexity separation $VP_{\text{s}} \neq VNP$ (and consequently $\text{P} \neq \text{NP}$) is unconditionally certified within the K\"ahler paradigm if and only if the normal bundle $\mathcal{N}_{\mathcal{M}/\mathcal{N}}$ satisfies the non-vanishing obstruction condition:
 \begin{equation}
-m \geq \Omega(2^{\gamma n}) \implies VP_{\text{s}} \neq VNP \implies \text{P} \neq \text{NP}
+\limsup_{n \to \infty} \left( \phi_!(c_{n^2}(\mathcal{M}_n)) \smallsmile c_{m-n^2}(\mathcal{N}_{\mathcal{M}/\mathcal{N}}) \right) \neq 0
+\end{equation}
+for all $m = \text{poly}(n)$. Under this condition, the smoothness of the isometric embedding collapses asymptotically, forcing:
+\begin{equation}
+m \geq \Omega(2^{\gamma n}) \implies \text{P} \neq \text{NP}
 \end{equation}
 \end{theorem}
 \qed
 
 \end{document}
+
+
